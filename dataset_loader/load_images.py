@@ -6,7 +6,7 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.config import settings
-from api.database import get_session
+from api.database import async_session
 from api.exercises.models import Exercise, ExercisePhoto
 
 data_path = Path(__file__).parent.joinpath("data.json")
@@ -56,7 +56,7 @@ async def create_exercise_photo(
 
 async def main(data_dict):
     c = 1
-    async with get_session() as session:
+    async with async_session() as session:
         print('entrypoint function')
         for exercise in data_dict:
             print(f"{c}/588")
